@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>回到顶部</title>
+	<style type="text/css" media="screen">
+		*{padding:0; margin:0;}
+		.page{width:1190px; margin:0 auto;}
+		#btn{width: 40px; height: 40px;display: none; position: fixed;left:50%; bottom:30px ; margin-left:610px;background: url(top_bg.png) no-repeat left top;}
+		#btn:hover{background: url(top_bg.png) no-repeat left -40px;}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var obtn=document.getElementById('btn');
+			var clientHeight=document.documentElement.clientHeight;	
+			var timer=null;
+			var isTop=true;
+
+			window.onscroll=function(){
+				var osTop=document.documentElement.scrollTop||document.body.scrollTop;
+				if(osTop>=clientHeight){
+					obtn.style.display='block';
+				}else{
+					obtn.style.display='none';
+				}
+				if(!isTop){
+					clearInterval(timer);
+				}
+				isTop=false;
+			}
+			btn.onclick=function(){
+				timer=setInterval(function(){
+					var speed=Math.floor(-osTop/10);
+					var osTop=document.documentElement.scrollTop||document.body.scrollTop;
+					document.documentElement.scrollTop=document.body.scrollTop=osTop+speed;
+					isTop=true;
+
+					if(osTop==0){
+						clearInterval(timer);
+					}
+				},100);
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="page">
+		<img src="tb_bg.jpg" alt="淘宝">
+	</div>
+	<a href="javascript:;" id="btn" title="回到顶部"></a>
+</body>
+</html>
